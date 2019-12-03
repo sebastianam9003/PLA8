@@ -9,8 +9,9 @@
 <title>Lista de contactos</title>
 </head>
 <body>
-<h1>Lista de tareas</h1>
+<h1>AGENDA - Lista de contactos</h1>
 
+	<a href="addcontacto">Añadir Contacto.</a>
 	<table>
 		<tr>
 			<td>Id</td>
@@ -20,11 +21,19 @@
 		</tr>
 		
 		<c:forEach var="contacto" items="${contacto}">
+			<c:url var="linkEditar" value="/contacto/updatecontacto">
+				<c:param name="idcontacto" value="${contacto.idcontacto }" />
+			</c:url>
+			<c:url var="linkBorrar" value="/contacto/deletecontacto">
+				<c:param name="idcontacto" value="${contacto.idcontacto }" />
+			</c:url>
 		<tr>
 			<td>${contacto.idcontacto }</td>
 			<td>${contacto.nombre }</td>
 			<td>${contacto.email }</td>
 			<td>${contacto.telefono }</td>
+			<td><a href="${linkEditar }">Editar</a>
+			<a href="${linkBorrar }" onclick="if(!confirm('¿Estáseguro?')) return false">Borrar</a></td>
 		</tr>
 		</c:forEach>
 	</table>
