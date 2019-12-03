@@ -5,4 +5,10 @@ import com.trifulcas.springhibernate.entity.Contacto;
 
 public interface IContactoDAO {
 	List<Contacto> getContacto();
+	
+	void save(Contacto contacto);
+	
+	Contacto getContacto(int idcontacto);
+	
+	void delete(Contacto contacto);
 }
